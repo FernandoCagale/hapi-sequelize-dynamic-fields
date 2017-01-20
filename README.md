@@ -1,1 +1,0 @@
-# hapi-sequelize-dynamic-fields
