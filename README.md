@@ -151,7 +151,7 @@ export const list = async (request, reply) => {
   }
 };
 
-export const list = async (request, reply) => {
+export const listTasks = async (request, reply) => {
   try {
     const model = request.database.Tasks;
 
