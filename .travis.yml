@@ -1,20 +1,12 @@
 language: node_js
-
-node_js:
-  - "4"
-  - "5"
-
-addons:
-  postgresql: "9.3"
-
-services:
-  - postgresql
-
-before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-
-env:
-  - DB_NAME=travis_ci_test DB_USERNAME=postgres DB_PASSWORD= 
-
 sudo: false
 
+node_js:
+  - "6"
+
+install:
+  - pwd && npm install
+  - env
+
+env:
+- CXX=g++-4.9
