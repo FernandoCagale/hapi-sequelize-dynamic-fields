@@ -1,6 +1,7 @@
 Hapi-sequelize-dynamic-fields(BETA)
 ===
 
+[![Build Status][travis-badge]][travis-url]
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
 
 ## Usage
@@ -243,3 +244,6 @@ LEFT OUTER JOIN 'users' AS 'User' ON 'Tasks'.'user_id' = 'User'.'id';
   "allowing-fields": "id,descriptions,observation,User.id,User.username,User.firstName,User.lastName,User.email",
   ...
 }
+
+[travis-badge]:https://travis-ci.org/FernandoCagale/hapi-sequelize-dynamic-fields.svg?branch=master
+[travis-url]: https://travis-ci.org/FernandoCagale/hapi-sequelize-dynamic-fields
