@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataType) => {
-  return sequelize.define('User', {
+  const User = sequelize.define('User', {
     username: {
       type: DataType.STRING(40),
       allowNull: false,
@@ -34,4 +34,6 @@ module.exports = (sequelize, DataType) => {
     updatedAt: 'update_at',
     tableName: 'users'
   });
+
+  return User;
 };
