@@ -4,6 +4,38 @@ Hapi-sequelize-dynamic-fields(BETA)
 [![Build Status][travis-badge]][travis-url]
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
 
+Sometimes we return values at a given endpoint that not always we need all the information, with the plugin you can go through the header which fields you want to return.
+
+For example, we have a model of Tasks (sequelize) that has a relationship for the user. In this way, we could structurer the following query sequelize:
+
+```javascript
+const options = {
+  attributes: ['id', 'descriptions', 'observation'],
+  include: [{
+    model: request.database.User,
+    attributes: ['id', 'username', 'lastname', 'email']
+  }]
+};
+```
+
+In this case, all the fields entered in the attributes properties will be returned, including to the related table. But, will all this information always be used?
+
+We can do in the following manner:
+```javascript
+model.findAndCountAll(request.fieldsAll(options));
+```
+The plugin provide a call , `request.fieldsAll`, in which checks if there a property in the header called `fields`, if there is, the query will be mounted according to the fields informed, in case the field there isn’t, an exception will be thrown `AttributesInvalidError`.
+
+In t he return of our request we can inform which fields are permitted, by the function `request.fieldsHeaders`, for example:
+```javascript
+return reply(values).header('allowing-fields', request.fieldsHeaders(options));
+```
+Response Headers:
+
+`"allowing-fields": "id,descriptions,observation,User.id,User.username,User.firstName,User.lastName,User.email",`
+
+Practical example: 
+
 ## Usage
 ####Configuration Hapijs and K7 
 ===
@@ -38,7 +70,7 @@ server.register(register, (err) => {
 server.connection();
 ```
 
-####Create route
+####Create models
 ===
 
 ```javascript
@@ -110,7 +142,7 @@ server.connection();
   });
 ```
 
-####Create route
+####Create routes
 ===
 
 ```javascript
@@ -133,7 +165,7 @@ server.connection();
   ]);
 ...    
 ```
-####Create controller
+####Create controllers
 ===
 ```javascript
 export const list = async (request, reply) => {
