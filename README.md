@@ -26,7 +26,7 @@ model.findAndCountAll(request.fieldsAll(options));
 ```
 The plugin provide a call , `request.fieldsAll`, in which checks if there a property in the header called `fields`, if there is, the query will be mounted according to the fields informed, in case the field there isn’t, an exception will be thrown `AttributesInvalidError`.
 
-In t he return of our request we can inform which fields are permitted, by the function `request.fieldsHeaders`, for example:
+In the return of our request we can inform which fields are permitted, by the function `request.fieldsHeaders`, for example:
 ```javascript
 return reply(values).header('allowing-fields', request.fieldsHeaders(options));
 ```
