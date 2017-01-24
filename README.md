@@ -1,4 +1,4 @@
-Hapi-sequelize-dynamic-fields(BETA)
+Hapi-sequelize-dynamic-fields
 ===
 
 [![Build Status][travis-badge]][travis-url]
@@ -34,7 +34,7 @@ Response Headers:
 
 `"allowing-fields": "id,descriptions,observation,User.id,User.username,User.firstName,User.lastName,User.email",`
 
-##Practical example: 
+##Example: 
 
 ####Configuration Hapijs and K7 
 ===
