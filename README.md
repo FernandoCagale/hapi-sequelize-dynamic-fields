@@ -34,9 +34,8 @@ Response Headers:
 
 `"allowing-fields": "id,descriptions,observation,User.id,User.username,User.firstName,User.lastName,User.email",`
 
-Practical example: 
+##Practical example: 
 
-## Usage
 ####Configuration Hapijs and K7 
 ===
 
