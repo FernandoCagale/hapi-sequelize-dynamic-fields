@@ -36,7 +36,7 @@ Response Headers:
 
 ##Example: 
 
-####Configuration Hapijs and K7 
+Configuration Hapijs and K7 
 ===
 
 ```javascript
@@ -69,7 +69,7 @@ server.register(register, (err) => {
 server.connection();
 ```
 
-####Create models
+Create models
 ===
 
 ```javascript
@@ -141,7 +141,7 @@ server.connection();
   });
 ```
 
-####Create routes
+Create routes
 ===
 
 ```javascript
@@ -164,7 +164,7 @@ server.connection();
   ]);
 ...    
 ```
-####Create controllers
+Create controllers
 ===
 ```javascript
 export const list = async (request, reply) => {
@@ -204,43 +204,43 @@ export const listTasks = async (request, reply) => {
 };
 
 ```
-###Example Users
+Example Users
 ===
-####request
+request
 
 ```javascript
 curl -X GET --header 'Accept: application/json' --header 'fields: id' 'http://localhost:3000/user'
 ```
 
-####SQL
+SQL
 ```javascript
 SELECT 'id' FROM 'users' AS 'User';
 ```
 
-####request
+request
 ===
 ```javascript
 curl -X GET --header 'Accept: application/json' --header 'fields: id, email' 'http://localhost:3000/user'
 ```
 
-####SQL
+SQL
 ```javascript
 SELECT 'id', 'email' FROM 'users' AS 'User';
 ```
 
-####Response Headers
+Response Headers
 {
   "allowing-fields": "username,firstName,lastName,email",
   ...
 }
 
-###Example Tasks
+Example Tasks
 ===
 ```javascript
 curl -X GET --header 'Accept: application/json' 'http://localhost:3000/tasks'
 ```
 
-####SQL
+SQL
 ```javascript
 SELECT 
 	'Tasks'.'id', 
@@ -255,12 +255,11 @@ FROM 'tasks' AS 'Tasks'
 LEFT OUTER JOIN 'users' AS 'User' ON 'Tasks'.'user_id' = 'User'.'id';
 ```
 
-===
 ```javascript
 curl -X GET --header 'Accept: application/json' --header 'fields: id, User.id, User.username' 'http://localhost:3000/tasks'
 ```
 
-####SQL
+SQL
 ```javascript
 SELECT 
 	'Tasks'.'id', 
@@ -270,9 +269,10 @@ FROM 'tasks' AS 'Tasks'
 LEFT OUTER JOIN 'users' AS 'User' ON 'Tasks'.'user_id' = 'User'.'id';
 ```
 
-####Response Headers
+Response Headers
 {
-  "allowing-fields": "id,descriptions,observation,User.id,User.username,User.firstName,User.lastName,User.email",
+  "allowing-fields": 
+  "id,descriptions,observation,User.id,User.username, User.firstName,User.lastName,User.email",
   ...
 }
 
